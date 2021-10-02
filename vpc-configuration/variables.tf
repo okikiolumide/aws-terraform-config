@@ -52,7 +52,7 @@ locals {
   default_tags = {
     Description = "Created by Terraform"
     Environment = "dev"
-    Billing Account = "380741976904"
+    Billing Account = 380741976904
     Owner Email = "ddonolu@outlook.com"
     Managed By = "Ops"    
   }
