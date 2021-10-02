@@ -81,7 +81,7 @@ resource "aws_route_table" "private-route"{
 resource "aws_route" "rt2" {
     route_table_id              = aws_route_table.private-route.id
     destination_cidr_block      = "0.0.0.0/0"
-    nat_gateway_id              = aws_nat_gateway.nat[count.index].id
+    nat_gateway_id              = aws_nat_gateway.nat.id
 }
 
 resource "aws_route_table_association" "private" {
