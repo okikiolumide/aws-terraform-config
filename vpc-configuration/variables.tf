@@ -2,7 +2,7 @@ variable "region {
     default = "eu-central-1"
 }
 
-#Get aws availability zones
+# Get aws availability zones
 
 data "aws_availability_zones" "available"{
     state = "available"
@@ -11,6 +11,15 @@ data "aws_availability_zones" "available"{
 variable "vpc_cidr" {
     default = "172.16.0.0/16"
 }
+
+variable "public_subnet_cidr" {
+    default = "172.16.0.0/16"
+}
+
+variable "private_subnet_cidr" {
+    default = "172.16.1.0/16"
+}
+
 variable "enable_dns_support" {
     default = "true"
 }
@@ -28,6 +37,10 @@ variable "enable_classiclink_dns_support"{
 }
 
 variable "preferred_number_of_public_subnets"{
+    default = null
+}
+
+variable "preferred_number_of_private_subnets"{
     default = null
 }
 

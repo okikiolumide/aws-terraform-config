@@ -1,9 +1,4 @@
 
-provider "aws" {
-    region = var.region
-}
-
-
 ************************************************************
 # Create VPC
 
@@ -22,16 +17,30 @@ resource "aws_vpc" "main"{
 resource "aws_subnet" "public" {
     count                       = var.preferred_number_of_public_subnets == null ? length(data.aws_availability_zones.available.names) : var.preferred_number_of_public_subnets
     vpc_id                      = aws_vpc.main.id
-    cidr_block                  = cidrsubnet(var.vpc_cidr, 4 , count.index)
+    cidr_block                  = cidrsubnet(var.vpc_cidr, 8 , count.index)
     map_public_ip_on_launch     = true
     availability_zone           = data.aws_availability_zones.available.names[count.index]
     tags = merge(
         local.default_tags,
         {
-            Name = format ("aws-public-subnet-%s" , count.index )
+            Name = format ("%s-public-subnet-%s" , var.environment, count.index )
         }
     )
 }    
 
 # Create Private Subnet
+
+resource "aws_subnet" "private" {
+    count                       = var.preferred_number_of_private_subnets == null ? length(data.aws_availability_zones.available.names) : var.preferred_number_of_public_subnets
+    vpc_id                      = aws_vpc.main.id
+    cidr_block                  = cidrsubnet(var.vpc_cidr, 8 , count.index)
+    map_public_ip_on_launch     = true
+    availability_zone           = data.aws_availability_zones.available.names[count.index]
+    tags = merge(
+        local.default_tags,
+        {
+            Name = format ("%s-private-subnet-%s" , var.environment, count.index )
+        }
+    )
+}    
 
