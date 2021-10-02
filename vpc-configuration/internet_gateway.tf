@@ -1,9 +1,7 @@
 
 resource "aws_internet_gateway" "ig"{
     vpc_id = aws_vpc.main.id
-    tags = merge(
-        local.default_tags,
-        {
+    tags = {
             Name = format("%s-%s" , aws_vpc.main.id , "IG")
         }
     )
