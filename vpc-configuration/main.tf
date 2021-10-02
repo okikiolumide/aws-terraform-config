@@ -8,8 +8,7 @@ resource "aws_vpc" "main" {
     enable_classiclink                  = var.enable_classiclink
     enable_classiclink_dns_support      = var.enable_classiclink
     
-    tags =
-        {
+    tags = {
             Name = format("vpc-%s" , var.environment )
         }
     
