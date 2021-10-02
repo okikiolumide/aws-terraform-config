@@ -5,7 +5,7 @@ resource "aws_eip" "nat_eip" {
     tags = {
             Name = format("EIP-%s" , var.environment)
         }
-    )
+    
 }
 
 resource "aws_nat_gateway" "nat" {
@@ -16,6 +16,6 @@ resource "aws_nat_gateway" "nat" {
     tags = {
             Name = format("Nat-%s", var.environment)
         }
-    )
+    
 }
 
