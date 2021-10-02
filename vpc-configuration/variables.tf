@@ -1,5 +1,5 @@
 variable "region" {
-    default = "eu-central-1"
+    default = "us-east-1"
 }
 
 # Get aws availability zones
@@ -46,4 +46,14 @@ variable "preferred_number_of_private_subnets"{
 
 variable "environment" {
     default = "dev"
+}
+
+locals {
+  default_tags = {
+    Description = "Created by Terraform"
+    Environment = dev
+    Billing Account = 380741976904
+    Owner Email = ddonolu@outlook.com
+    Managed By = Ops    
+  }
 }
