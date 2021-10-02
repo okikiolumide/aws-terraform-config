@@ -16,6 +16,6 @@ preferred_number_of_private_subnets     = 2
 
 environment                             = "dev"
 
-public_subnet_cidr                      = "172.16.0.0/24"
+# public_subnet_cidr                      = "172.16.0.0/24"
 
-private_subnet_cidr                     = "172.16.1.0/24"
+# private_subnet_cidr                     = "172.16.1.0/24"
