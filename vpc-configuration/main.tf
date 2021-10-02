@@ -8,11 +8,11 @@ resource "aws_vpc" "main" {
     enable_classiclink                  = var.enable_classiclink
     enable_classiclink_dns_support      = var.enable_classiclink
     
-    # tags =
-    #     {
-    #         Name = format ("vpc-%s" , var.environment )
-    #     }
-    # )
+    tags =
+        {
+            Name = format ("vpc-%s" , var.environment )
+        }
+    
 }
 
 # Create Public Subnet 
@@ -27,7 +27,7 @@ resource "aws_subnet" "public" {
         {
             Name = format ("%s-public-subnet-%s" , var.environment, count.index )
         }
-    )
+    
 }    
 
 # Create Private Subnet
@@ -42,7 +42,7 @@ resource "aws_subnet" "private" {
         {
             Name = format ("%s-private-subnet-%s" , var.environment, count.index )
         }
-    )
+    
 }    
 
 # Route Table
@@ -61,5 +61,5 @@ resource "aws_route_table" "rt"{
         {
             Name = format ("route-table-%s" , var.environment )
         }
-    )
+    
 }
