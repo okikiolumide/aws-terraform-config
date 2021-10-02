@@ -36,7 +36,7 @@ resource "aws_subnet" "private" {
     cidr_block                  = cidrsubnet(var.vpc_cidr, 4 , count.index+2)
     map_public_ip_on_launch     = false
     availability_zone           = data.aws_availability_zones.available.names[count.index]
-    ttags = merge(
+    tags = merge(
         local.default_tags,{
             Name = format("%s-private-subnet-%s" , var.environment, count.index )
         }

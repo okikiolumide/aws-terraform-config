@@ -51,7 +51,7 @@ variable "environment" {
 locals {
   default_tags = {
     Description = "Created by Terraform"
-    Environment = dev
+    Environment = var.environment
     Billing_Account = "380741976904"
     Owner_Email = "ddonolu@outlook.com"
     Managed_By = "Ops"  
